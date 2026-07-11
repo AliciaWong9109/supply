@@ -66,3 +66,12 @@ body { font-size: 17px; }
 .enquiry-form label { font-size: 10px; }
 .site-footer { font-size: 12px; }
 @media (max-width: 440px) { .announcement { font-size: 10px; } .hero-lede { font-size: 16px; } }
+/* GSAP-ready category treatment */
+.category-card img { will-change: transform; }
+.category-content { transition: transform .35s ease; }
+.category-card.is-active { box-shadow: 0 0 0 2px var(--orange); }
+.category-card.is-active img { filter: saturate(.95); }
+.category-card.is-active .category-content { transform: translateY(-5px); }
+.category-wide { grid-column: 2 / span 2; }
+.brand-strip { overflow: hidden; }
+.brand-list { will-change: transform; }

@@ -50,6 +50,37 @@
     });
   });
 
+  // Product-story motion: gentle image parallax, active-card emphasis, and content lift.
+  gsap.utils.toArray('.category-card').forEach((card, index) => {
+    const image = card.querySelector('img');
+    const content = card.querySelector('.category-content');
+    gsap.fromTo(image, { yPercent: 4 }, {
+      yPercent: -4,
+      ease: 'none',
+      scrollTrigger: { trigger: card, start: 'top bottom', end: 'bottom top', scrub: 1 },
+    });
+    gsap.from(content, {
+      y: 16,
+      opacity: 0,
+      duration: .45,
+      delay: index * .025,
+      ease: 'power2.out',
+      scrollTrigger: { trigger: card, start: 'top 78%', once: true },
+    });
+    ScrollTrigger.create({
+      trigger: card,
+      start: 'top 64%',
+      end: 'bottom 36%',
+      toggleClass: { targets: card, className: 'is-active' },
+    });
+  });
+
+  gsap.to('.brand-list', {
+    xPercent: -6,
+    ease: 'none',
+    scrollTrigger: { trigger: '.brand-strip', start: 'top bottom', end: 'bottom top', scrub: 1 },
+  });
+
   gsap.from('.section-heading, .brand-strip', { y: 24, opacity: 0, duration: .65, stagger: .12, ease: 'power2.out', scrollTrigger: { trigger: '.departments', start: 'top 78%', once: true } });
 
   gsap.from('.reveal-image', { clipPath: 'inset(0 100% 0 0)', duration: 1, ease: 'power3.inOut', scrollTrigger: { trigger: '.split-story', start: 'top 70%', once: true } });
